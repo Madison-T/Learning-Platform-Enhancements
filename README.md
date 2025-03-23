@@ -17,11 +17,23 @@ This project improves the interactivity of LMS assessments for Foster Moore's Ve
 
 Each plugin lives in its own folder under `plugins/`. These include:
 
+### 🔹 Assessment Plugins
+
 - **🧩 Drag and Drop** – Match items to categories or sequences
 - **🐞 Find the Error** – Click the incorrect line of code
 - **⌨️ Complete the Code** – Fill in the blanks in real syntax
 - **⏱️ Timed Sequence** – Complete tasks before a timer runs out
-- **💻 Formatted Code Block** – Display clean syntax-highlighted examples
+
+### 🔹 Presentation Plugin
+
+- **💻 Formatted Code Block** – Display clean, syntax-highlighted code examples
+
+### 🔹 Navigation & Completion Plugins
+
+- **⏮️ Prev-Fin Page iDevice** – Adds previous/finish buttons and triggers SCORM completion
+- **⏮️⏭️ Prev-Next Page iDevice** – Adds navigation buttons between pages
+- **➡️ Next Page iDevice** – Adds a "Next" button to link SCORM pages
+- **✅ Finish Button iDevice** – Triggers SCORM completion with a single "Finish" button
 
 ---
 
@@ -29,14 +41,18 @@ Each plugin lives in its own folder under `plugins/`. These include:
 
 ```plaintext
 plugins/
-  └── drag-and-drop/
-  └── find-the-error/
-  └── complete-the-code/
-  └── timed-sequence/
-  └── formatted-code-block/
+  ├── drag-and-drop-idevice/
+  ├── find-the-error-idevice/
+  ├── complete-the-code-idevice/
+  ├── timed-sequence-idevice/
+  ├── formatted-code-block-idevice/
+  ├── prev-fin-page-idevice/
+  ├── prev-next-page-idevice/
+  ├── next-page-idevice/
+  └── finish-button-idevice/
 
 docs/
-
+  └── Meeting Notes/
 
 guides/
   └── SCOFunctions-Fixes.md

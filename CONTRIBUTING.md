@@ -7,11 +7,15 @@ Thanks for your interest in improving this project! Whether you're fixing a bug,
 ## 🧭 Folder Structure
 
 - `plugins/` — Each SCORM plugin has its own folder:
-  - `drag-and-drop/`
-  - `find-the-error/`
-  - `complete-the-code/`
-  - `timed-sequence/`
-  - `formatted-code-block/`
+  - `drag-and-drop-idevice/`
+  - `find-the-error-idevice/`
+  - `complete-the-code-idevice/`
+  - `timed-sequence-idevice/`
+  - `formatted-code-block-idevice/`
+  - `prev-fin-page-idevice/`
+  - `prev-next-page-idevice/`
+  - `next-page-idevice/`
+  - `finish-button-idevice/`
 - `docs/` — Project documentation, reports, and meeting notes
 - `guides/` — Technical guides (e.g. SCORM fixes, iDevice creation)
 - `.github/ISSUE_TEMPLATE/` — Templates for bugs and feature requests
@@ -40,7 +44,7 @@ Thanks for your interest in improving this project! Whether you're fixing a bug,
 5. Stage and commit your changes:
    ```bash
    git add .
-   git commit -m "Add feature: drag-and-drop plugin base"
+   git commit -m "Add feature: <plugin name> idevice"
    ```
 
 6. Push your branch and open a Pull Request:
@@ -55,7 +59,7 @@ Thanks for your interest in improving this project! Whether you're fixing a bug,
 Before submitting a pull request, make sure your plugin:
 - [ ] Contains a valid `config.xml`
 - [ ] Has both `edition/` and `export/` folders
-- [ ] Follows the naming conventions (hyphenated lowercase)
+- [ ] Follows the naming conventions (hyphenated lowercase, ends in `-idevice`)
 - [ ] Works in eXeLearning and exports cleanly
 - [ ] Tracks completion properly in TalentLMS when embedded
 
@@ -65,7 +69,7 @@ Before submitting a pull request, make sure your plugin:
 
 - Use clear, meaningful commit messages
 - Comment complex code
-- Use hyphen-case for folders and filenames (e.g. `find-the-error`)
+- Use hyphen-case for folders and filenames (e.g. `find-the-error-idevice`)
 - Organize JS/CSS cleanly and modularly
 - Keep unrelated changes in separate branches
 
