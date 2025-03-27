@@ -37,7 +37,7 @@ Each plugin lives in its own folder under `plugins/`. These include:
 
 ---
 
-## 📁 Folder Structure
+## Folder Structure
 
 ```plaintext
 plugins/
