@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Finish Button iDevice – Live Editor + Preview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Export CSS -->
+  <link rel="stylesheet" href="export/finish-button-idevice.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 2rem;
+    }
+
+    .container {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    textarea.jsContentEditor {
+      width: 100%;
+      height: 100px;
+      margin-top: 1rem;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      font-family: monospace;
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .iDevice_content {
+      margin-top: 1.5rem;
+    }
+  </style>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Edit Mode -->
+  <div id="editorView">
+    <h2>🛠️ Edit Mode (edition)</h2>
+    <textarea class="jsContentEditor" placeholder="Hidden config (simulated)"></textarea>
+    <div id="editorOutput"></div>
+    <button id="toPreview">Save & Preview</button>
+  </div>
+
+  <!-- Preview Mode -->
+  <div id="previewView" class="hidden">
+    <h2>🚀 Preview Mode (export)</h2>
+    <div id="exportOutput" class="iDevice_content"></div>
+    <button id="toEditor">🔙 Back to Edit Mode</button>
+  </div>
+
+</div>
+
+<!-- Load edition logic -->
+<script src="edition/finish-button-idevice.js"></script>
+
+<script>
+  let savedOutputHtml = ""; // This stores the output from $exeDevice.save()
+
+  $(function () {
+    if (typeof $exeDevice !== "undefined" && typeof $exeDevice.init === "function") {
+      $exeDevice.init();
+    }
+
+    // Switch to Preview Mode
+    $("#toPreview").on("click", function () {
+      if (typeof $exeDevice.save === "function") {
+        savedOutputHtml = $exeDevice.save();
+        $("#exportOutput").html(savedOutputHtml);
+
+        // Dynamically load export script only once
+        if (!window.exportScriptLoaded) {
+          const script = document.createElement("script");
+          script.src = "export/finish-button-idevice.js";
+          document.body.appendChild(script);
+          window.exportScriptLoaded = true;
+        }
+
+        $("#editorView").addClass("hidden");
+        $("#previewView").removeClass("hidden");
+      }
+    });
+
+    // Switch back to Edit Mode
+    $("#toEditor").on("click", function () {
+      $("#previewView").addClass("hidden");
+      $("#editorView").removeClass("hidden");
+      $("#exportOutput").empty(); // Reset preview area
+    });
+  });
+</script>
+
+</body>
+</html>

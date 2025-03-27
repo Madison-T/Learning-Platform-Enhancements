@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Finish Button iDevice Editor Preview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 2rem;
+    }
+
+    .iDevice_editor {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      max-width: 700px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    textarea.jsContentEditor {
+      width: 100%;
+      height: 120px;
+      margin-top: 1rem;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      font-family: monospace;
+    }
+
+    button#simulateSave {
+      margin-top: 1rem;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .output-preview {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #eaeaea;
+      border-radius: 4px;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+  </style>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <div class="iDevice_editor">
+    <h2>Editor Preview: Finish Button iDevice</h2>
+
+    <!-- This textarea mimics the hidden one in eXeLearning -->
+    <textarea class="jsContentEditor" placeholder="Hidden config storage"></textarea>
+
+    <!-- Output form gets injected above this textarea -->
+    <!-- Trigger the save to preview output -->
+    <button id="simulateSave">Save and Preview Output</button>
+
+    <div class="output-preview" id="saveResult"></div>
+  </div>
+
+  <!-- Your edition JS file -->
+  <script src="finish-button-idevice.js"></script>
+
+  <script>
+    // Simulate eXeLearning environment
+    $(function() {
+      // Mock eXeLearning object
+      window.eXe = window.eXe || {};
+      eXe.app = {
+        alert: (msg) => alert(msg)
+      };
+
+      // Call your init logic
+      if (typeof $exeDevice !== "undefined" && typeof $exeDevice.init === "function") {
+        $exeDevice.init();
+      }
+
+      // Simulate "Save" button click
+      $("#simulateSave").on("click", function () {
+        if (typeof $exeDevice.save === "function") {
+          const result = $exeDevice.save();
+          $("#saveResult").html(`<strong>Output:</strong>\n${result}`);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
