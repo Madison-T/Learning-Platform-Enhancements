@@ -1,10 +1,10 @@
 # Contributing to Learning Platform Enhancements
 
-Thanks for your interest in improving this project! Whether you're fixing a bug, writing a new plugin, or improving docs, follow these steps to get started.
+Thanks for improving this project! Whether you're fixing a bug, writing a new plugin, or improving docs, please follow the following steps.
 
 ---
 
-## 🧭 Folder Structure
+##  Folder Structure
 
 - `plugins/` — Each SCORM plugin has its own folder:
   - `drag-and-drop-idevice/`
@@ -22,7 +22,7 @@ Thanks for your interest in improving this project! Whether you're fixing a bug,
 
 ---
 
-## 🔧 Development Workflow
+##  Development Workflow
 
 1. Create a new branch from `main`:
    ```bash
@@ -31,7 +31,7 @@ Thanks for your interest in improving this project! Whether you're fixing a bug,
 
 2. Make your changes inside the correct folder
 
-3. 🛠 **Before Testing SCORM Completion Locally**
+3.  **Before Testing SCORM Completion Locally**
 
    Make sure you've applied the required changes to your local `SCOFunctions.js` file in eXeLearning.
 
@@ -54,7 +54,7 @@ Thanks for your interest in improving this project! Whether you're fixing a bug,
 
 ---
 
-## ✅ Plugin Checklist
+##  Plugin Checklist
 
 Before submitting a pull request, make sure your plugin:
 - [ ] Contains a valid `config.xml`
@@ -65,7 +65,7 @@ Before submitting a pull request, make sure your plugin:
 
 ---
 
-## 💬 Style Guidelines
+##  Style Guidelines
 
 - Use clear, meaningful commit messages
 - Comment complex code
@@ -75,6 +75,6 @@ Before submitting a pull request, make sure your plugin:
 
 ---
 
-## 🙌 Thanks!
+##  Thanks!
 
-Your contributions help improve learning experiences for Foster Moore's clients and make this project shine in your portfolio.
+Your contributions help improve learning experiences.
