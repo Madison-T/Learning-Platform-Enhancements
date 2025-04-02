@@ -5,7 +5,7 @@ var $exeDevice = {
                 <div class="exe-idevice-info">' + _("Instructions: Enter the question with answers surrounded by asterisks.") + '</div>\
                 <p>\
                     <label for="questionInput">Question:</label>\
-                    <input type="text" id="questionInput" placeholder="Hello yesterday I went to the *shop* then I went *outside*">\
+                    <input type="text" id="questionInput" placeholder="Hello yesterday I went to the *shop* then I went *outside*" style="width: 100%; max-width: 600px; height: 40px;">\
                 </p>\
                 <button type="button" id="generateDragDrop">Generate Drag and Drop</button>\
                 <div id="dragDropArea"></div>\
