@@ -4,7 +4,7 @@ var $exeDevice = {
         var html = '\
             <div id="myExampleForm">\
                 <div class="exe-idevice-info">' + _("Instructions: Enter the question with the answer surrounded by asterisks.") + '</div>\
-                <div class="exe-form-tab" title="Question Input">\
+                \
                     <p>\
                         <label for="questionInput">Question:</label>\
                         <input type="text" id="questionInput" placeholder="The capital of New Zealand is *Wellington*">\
