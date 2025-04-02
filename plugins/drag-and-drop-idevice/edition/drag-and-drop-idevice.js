@@ -1,17 +1,14 @@
 var $exeDevice = {
     init: function() {
-        // Updated HTML to include a field for inputting the question with draggable answer
         var html = '\
             <div id="myExampleForm">\
-                <div class="exe-idevice-info">' + _("Instructions: Enter the question with the answer surrounded by asterisks.") + '</div>\
-                \
-                    <p>\
-                        <label for="questionInput">Question:</label>\
-                        <input type="text" id="questionInput" placeholder="The capital of New Zealand is *Wellington*">\
-                    </p>\
-                    <button type="button" id="generateDragDrop">Generate Drag and Drop</button>\
-                    <div id="dragDropArea"></div>\
-                </div>\
+                <div class="exe-idevice-info">' + _("Instructions: Enter the question with answers surrounded by asterisks.") + '</div>\
+                <p>\
+                    <label for="questionInput">Question:</label>\
+                    <input type="text" id="questionInput" placeholder="Hello yesterday I went to the *shop* then I went *outside*">\
+                </p>\
+                <button type="button" id="generateDragDrop">Generate Drag and Drop</button>\
+                <div id="dragDropArea"></div>\
             </div>\
         ';
 
@@ -19,7 +16,6 @@ var $exeDevice = {
         field.before(html);
         $exeAuthoring.iDevice.tabs.init("myExampleForm");
 
-        // Button to process the input and create drag and drop setup
         $("#generateDragDrop").on("click", function() {
             var inputText = $("#questionInput").val();
             $exeDevice.processInput(inputText);
@@ -29,24 +25,32 @@ var $exeDevice = {
     },
 
     processInput: function(inputText) {
-        var parts = inputText.split("*");
-        if (parts.length === 3) {
-            var questionPart1 = parts[0];
-            var answer = parts[1];
-            var questionPart2 = parts[2];
+        var matches = [...inputText.matchAll(/\*(.*?)\*/g)];
+        var lastIndex = 0;
+        var dragDropHtml = '';
 
-            var dragDropHtml = questionPart1 +
-                '<div class="drop-zone">[Drop answer here]</div>' +
-                questionPart2 +
-                '<div class="draggable" draggable="true" id="draggableAnswer">' + answer + '</div>';
+        matches.forEach(function(match, index) {
+            var answer = match[1];
+            var start = match.index;
+            var end = start + match[0].length;
 
-            $("#dragDropArea").html(dragDropHtml);
+            // Add text before the answer
+            dragDropHtml += inputText.substring(lastIndex, start);
 
-            // Initialize draggable and droppable functionality
-            this.setupDragAndDrop();
-        } else {
-            alert("Please format the question with the answer surrounded by asterisks.");
-        }
+            // Add drop zone and draggable item
+            dragDropHtml += '<div class="drop-zone">[Drop answer here]</div>';
+            dragDropHtml += '<div class="draggable" draggable="true" id="draggableAnswer' + index + '">' + answer + '</div>';
+
+            lastIndex = end;
+        });
+
+        // Add remaining text after the last answer
+        dragDropHtml += inputText.substring(lastIndex);
+
+        $("#dragDropArea").html(dragDropHtml);
+
+        // Initialize draggable and droppable functionality
+        this.setupDragAndDrop();
     },
 
     setupDragAndDrop: function() {
